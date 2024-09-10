@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PersonalDetails from './components/PersonalDetails';
+import AddressDetails from './components/AddressDetails';
+import PaymentDetails from './components/PaymentDetails';
+import Summary from './components/Summery';
+import { FormProvider } from './context/FormContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FormProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<PersonalDetails />} />
+          <Route path="/address" element={<AddressDetails />} />
+          <Route path="/payment" element={<PaymentDetails />} />
+          <Route path="/summary" element={<Summary />} />
+        </Routes>
+      </Router>
+    </FormProvider>
   );
 }
 
