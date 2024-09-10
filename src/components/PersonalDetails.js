@@ -11,53 +11,52 @@ function PersonalDetails() {
     if (!formData.firstName || !formData.lastName || !formData.phoneNumber || !formData.gender) {
       setFormError('All fields are required');
       return;
-    } else if (formData.phoneNumber <= 999999999 ||formData.phoneNumber >= 9999999999  ){
-        setFormError('Phone Number is not correct');
-        return;
+    } else if (formData.phoneNumber <= 999999999 || formData.phoneNumber >= 9999999999) {
+      setFormError('Phone Number is not correct');
+      return;
     }
     setFormError('');
     navigate('/address');
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Personal Details</h2>
+    <div className="contact-form-container mt-5">
+      <h2 className="form-heading">Personal Details</h2>
+      <p className="form-subheading">
+        Let's know some information about you
+      </p>
       <form>
-        <div className="mb-3">
-          <label>First Name</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
-            placeholder="Ram"
+            className="form-control form-input"
+            placeholder="First name*"
             value={formData.firstName}
             onChange={(e) => updateFormData({ firstName: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>Last Name</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
-            placeholder="Singh"
+            className="form-control form-input"
+            placeholder="Last name*"
             value={formData.lastName}
             onChange={(e) => updateFormData({ lastName: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>Phone Number</label>
+        <div className="form-group mb-3">
           <input
             type="tel"
-            className="form-control"
-            placeholder="987456235"
+            className="form-control form-input"
+            placeholder="Phone number*"
             value={formData.phoneNumber}
             onChange={(e) => updateFormData({ phoneNumber: e.target.value })}
             required
           />
         </div>
-        <div className="mb-3">
-          <label>Gender</label>
+        <div className="form-group mb-3">
           <select
-            className="form-control"
+            className="form-control form-input"
             value={formData.gender}
             onChange={(e) => updateFormData({ gender: e.target.value })}
           >
@@ -67,9 +66,11 @@ function PersonalDetails() {
           </select>
         </div>
         {formError && <p className="text-danger">{formError}</p>}
-        <button type="button" className="btn btn-primary" onClick={handleNext}>
+        <div className='form-btn-div'>
+        <button type="button" className="btn btn-primary form-btn" onClick={handleNext}>
           Next
         </button>
+        </div>
       </form>
     </div>
   );

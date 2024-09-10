@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FormContext } from '../context/FormContext';
 
 function Summary() {
   const { formData } = useContext(FormContext);
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate('/payment');
+  };
 
   return (
-    <div className="container mt-5">
-      <h2>Summary</h2>
+    <div className="summary-container mt-5">
+      <h2 className="form-heading">Summary</h2>
       <ul className="list-group">
         <li className="list-group-item"><strong>First Name:</strong> {formData.firstName}</li>
         <li className="list-group-item"><strong>Last Name:</strong> {formData.lastName}</li>
@@ -22,6 +28,11 @@ function Summary() {
         <li className="list-group-item"><strong>Branch Name:</strong> {formData.branchName}</li>
         <li className="list-group-item"><strong>IFSC Code:</strong> {formData.ifscCode}</li>
       </ul>
+      <div className="form-btn-div mt-4">
+        <button type="button" className="btn btn-secondary form-btn" onClick={handleBack}>
+          Back
+        </button>
+      </div>
     </div>
   );
 }

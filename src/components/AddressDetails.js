@@ -10,7 +10,6 @@ function AddressDetails() {
   const [selectedCountry, setSelectedCountry] = useState('');
 
   useEffect(() => {
-    // Fetch countries from the REST Countries API
     fetch('https://restcountries.com/v3.1/all')
       .then(response => response.json())
       .then(data => {
@@ -37,49 +36,49 @@ function AddressDetails() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Address Details</h2>
+    <div className="address-form-container mt-5">
+      <h2 className="form-heading">Address Details</h2>
+      <p className="form-subheading">Please provide your address information</p>
       <form>
-        <div className="mb-3">
-          <label>Address</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Address*"
             value={formData.address}
             onChange={(e) => updateFormData({ address: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>City</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="City*"
             value={formData.city}
             onChange={(e) => updateFormData({ city: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>Pin Code</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Pin Code*"
             value={formData.pinCode}
             onChange={(e) => updateFormData({ pinCode: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>State</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="State*"
             value={formData.state}
             onChange={(e) => updateFormData({ state: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>Country</label>
+        <div className="form-group mb-3">
           <select
-            className="form-control"
+            className="form-control form-input"
             value={formData.country}
             onChange={(e) => {
               const selectedCountry = e.target.value;
@@ -96,12 +95,14 @@ function AddressDetails() {
           </select>
         </div>
         {formError && <p className="text-danger">{formError}</p>}
-        <button type="button" className="btn btn-secondary me-2" onClick={handleBack}>
-          Back
-        </button>
-        <button type="button" className="btn btn-primary" onClick={handleNext}>
-          Next
-        </button>
+        <div className="form-btn-div">
+          <button type="button" className="form-btn me-2" onClick={handleBack}>
+            Back
+          </button>
+          <button type="button" className="form-btn" onClick={handleNext}>
+            Next
+          </button>
+        </div>
       </form>
     </div>
   );

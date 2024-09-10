@@ -21,52 +21,55 @@ function PaymentDetails() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Payment Details</h2>
+    <div className="payment-form-container mt-5">
+      <h2 className="form-heading">Payment Details</h2>
+      <p className="form-subheading">Enter your payment information below</p>
       <form>
-        <div className="mb-3">
-          <label>Account Number</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Account Number*"
             value={formData.accountNumber}
             onChange={(e) => updateFormData({ accountNumber: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>Bank Name</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Bank Name*"
             value={formData.bankName}
             onChange={(e) => updateFormData({ bankName: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>Branch Name</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="Branch Name*"
             value={formData.branchName}
             onChange={(e) => updateFormData({ branchName: e.target.value })}
           />
         </div>
-        <div className="mb-3">
-          <label>IFSC Code</label>
+        <div className="form-group mb-3">
           <input
             type="text"
-            className="form-control"
+            className="form-control form-input"
+            placeholder="IFSC Code*"
             value={formData.ifscCode}
             onChange={(e) => updateFormData({ ifscCode: e.target.value })}
           />
         </div>
         {formError && <p className="text-danger">{formError}</p>}
-        <button type="button" className="btn btn-secondary me-2" onClick={handleBack}>
-          Back
-        </button>
-        <button type="button" className="btn btn-success" onClick={handleSubmit}>
-          Submit
-        </button>
+        <div className="form-btn-div">
+          <button type="button" className="btn btn-secondary form-btn me-2" onClick={handleBack}>
+            Back
+          </button>
+          <button type="button" className="btn btn-success form-btn" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
